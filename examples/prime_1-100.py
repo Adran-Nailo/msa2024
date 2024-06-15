@@ -1,5 +1,5 @@
-def prime_test(num):
-    for test_num in range(2,101):
+def prime_test(num,testing_num):
+    for test_num in range(2,testing_num):
         test_prime = num % test_num
         is_prime = True
         if test_num == num:
@@ -13,10 +13,23 @@ def prime_test(num):
     if is_prime == True:
         return num
 
-def main():
+def get_user_input():
+    while(True):
+        try:
+            user_input = int(input("Enter the upper limit of the numbers you want to check for primes: "))
+            if user_input < 2:
+                print("ERROR: number must be higher than 1")
+            break
+        except:
+            print("ERROR:enter a whole number")
+            continue
+    return user_input
+
+def main(user_input):
     print("\n")
-    for tested_number in range(1,101):
-        number=prime_test(tested_number)
+    user_input = get_user_input()
+    for tested_number in range(1,user_input):
+        number=prime_test(tested_number,user_input)
         try:
             int(number)
             print(number)
