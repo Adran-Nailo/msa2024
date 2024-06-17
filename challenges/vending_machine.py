@@ -9,20 +9,25 @@ def get_coin(amount_due):
     while(True):
         valid_coins = [1,5,10,25]
         try:
+            print(f"Amount Due: {amount_due}")
             user_input = int(input("Insert Coin:\n"))
+            print("-----------------")
             if user_input in valid_coins:
+                
                 break
-            print(f"Insert Coin:")
-        except:
             continue
-
-
+        except:
+            print("-----------------")
+            continue
+    return user_input
 
 def main():
     #Display amount due with a print statement
-    print("\nVending Machine\n-----------------\nAmount Due: 50")
+    print("\nVending Machine\n-----------------")
     amount_due = 50
     while amount_due > 0:
         coin_value = get_coin(amount_due)
         amount_due = amount_due - coin_value
+    change_owed = amount_due * -1
+    print (f"Change Owed: {change_owed}")
 main()
