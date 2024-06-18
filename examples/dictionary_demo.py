@@ -32,5 +32,5 @@ def main():
     #get all the keys and values from the car dictionary
     print("\n\n")
     for key, value in car.items():
-        print(f"{key}: {value}")
+        print(f"{key}: {value}") 
 main()
