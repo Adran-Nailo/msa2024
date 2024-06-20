@@ -37,6 +37,16 @@ def get_amount_of_questions():
         except:
             print("ERROR: Invalid Input!")
     return amount_of_questions
+    
+def get_response(correct_or_wrong):
+    wrong_responses = ["WRONG!!","That is the wrong answer.","Try again.","You've got this, just keep trying!","Not quite, let's try again!"]
+    correct_responses = ["CORRECT!!","That is the correct answer.","Great job! You nailed it!","Absolutely right! Well done!","Correct! well done"]
+    random_answer = random.randint(0,4)
+    if correct_or_wrong == "good":
+        response = correct_responses[random_answer]
+    elif correct_or_wrong == "bad":
+        response = wrong_responses[random_answer]
+    return response
 
 def game(amount_of_questions,start_range,end_range):
     correct_answers = 0
@@ -49,13 +59,14 @@ def game(amount_of_questions,start_range,end_range):
             try:
                 answer = int(input(f"{number_1} + {number_2} = "))
                 if answer == sum_of_numbers:
+                    print(get_response("good"))
                     break
                 else:
-                    print("WRONG!!!")
+                    print(get_response("bad"))
                     wrong_answers += 1
                     continue
             except:
-                print("WRONG!!!")
+                print(get_response("bad"))
                 wrong_answers += 1
                 continue
         if wrong_answers == 3:
@@ -63,7 +74,7 @@ def game(amount_of_questions,start_range,end_range):
         else:
             correct_answers += 1
     percentage = (correct_answers / amount_of_questions) * 100
-    print(f"You got {correct_answers} out of {amount_of_questions} correct. You got an {percentage}%")
+    print(f"\nYou got {correct_answers} out of {amount_of_questions} correct. You got an {percentage: .2f}%")
 
 def main():
     difficulty = get_level()
