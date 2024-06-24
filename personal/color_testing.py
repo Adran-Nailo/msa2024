@@ -11,3 +11,4 @@ class Color:
         self.clear = '\033[0m'
         self.bold = '\033[1m'
         self.underline = '\033[4m'
+        self.error = "\033[91;1;4m"
