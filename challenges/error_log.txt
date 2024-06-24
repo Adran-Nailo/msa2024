@@ -1,0 +1,15 @@
+<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
+<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
+<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mERROR: Credit hours less than 0 on line 4[0m
+<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
+<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
+<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mERROR: Credit hours less than 0 on line 4[0m
+<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
+<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
+<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mERROR: Credit hours less than 0 on line 4[0m
+<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
+<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
+<built-in method now of type object at 0x00007FFF46B30CD0>: There is an error in your data file. The error was found on line 2.
+<built-in method now of type object at 0x00007FFF46B30CD0>: There is an error in your data file. The error was found on line 3.
+2024-06-24 11:31:02.101598: There is an error in your data file. The error was found on line 2.
+2024-06-24 11:31:02.101598: There is an error in your data file. The error was found on line 3.
