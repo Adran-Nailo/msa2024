@@ -1,6 +1,6 @@
 import color_testing
 import datetime
-color = color_testing.Color()
+color = color_testing.Color() 
 #create an auto mobile class
 class Automobile():
 
@@ -33,14 +33,14 @@ class Automobile():
         try:
             self.__engine_size = float(new_size)
         except:
-            print(f"{color.red}{color.bold}{color.underrline}ERROR: Engine size must be a number{color.default}\n")
+            print(f"{color.red}{color.bold}{color.underline}ERROR: Engine size must be a number{color.default}\n")
 
     def get_owner(self):
         return self.__owner
     
     def set_owner(self, new_owner):
         if new_owner == "":
-            print(f"{color.red}{color.bold}{color.underrline}ERROR: Enter the new owner's name{color.default}\n")
+            print(f"{color.red}{color.bold}{color.underline}ERROR: Enter the new owner's name{color.default}\n")
         else:
             self.__owner = new_owner
 
