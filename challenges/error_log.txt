@@ -1,15 +1,24 @@
-<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
-<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
-<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mERROR: Credit hours less than 0 on line 4[0m
-<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
-<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
-<built-in method now of type object at 0x00007FFF44C70CD0>: [91m[1m[4mERROR: Credit hours less than 0 on line 4[0m
-<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
-<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
-<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mERROR: Credit hours less than 0 on line 4[0m
-<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 2. [0m
-<built-in method now of type object at 0x00007FFF46B30CD0>: [91m[1m[4mThere is an error in your data file. The error was found on line 3. [0m
-<built-in method now of type object at 0x00007FFF46B30CD0>: There is an error in your data file. The error was found on line 2.
-<built-in method now of type object at 0x00007FFF46B30CD0>: There is an error in your data file. The error was found on line 3.
-2024-06-24 11:31:02.101598: There is an error in your data file. The error was found on line 2.
-2024-06-24 11:31:02.101598: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:10:51.095251: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:10:51.095251: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:10:51.260235: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:10:51.260235: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:14:05.036862: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:14:05.036862: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:14:05.203663: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:14:05.203663: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:25:18.834434: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:25:18.835306: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:25:34.143749: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:25:34.143749: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:25:44.449995: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:25:44.449995: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:25:59.771804: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:25:59.771804: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:41:01.284207: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:41:01.284207: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:41:01.449643: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:41:01.449643: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:52:08.720217: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:52:08.720217: There is an error in your data file. The error was found on line 3.
+2024-06-26 09:52:08.887129: There is an error in your data file. The error was found on line 2.
+2024-06-26 09:52:08.887129: There is an error in your data file. The error was found on line 3.
