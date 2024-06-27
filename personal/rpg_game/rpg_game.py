@@ -40,38 +40,39 @@ def interaction_decision_maker():
 #function to add points to the player's score when they open a container
 def container(container_string):
     #container names    
-    container_name = ["c01"]
+    container_name = ["c01","c02"]
     #the amount of points added when the player opens the container
-    container_loot = [5]
+    container_loot = [5,15]
     for number in range(len(container_name)):
         if container_string == container_name[number]:
             player.score += container_loot[number]
 
 #function to run the interaction with objects
 def interact(game_map):
+    skip_map = False
     left_bound = player.coordinates_x -1
     right_bound = player.coordinates_x + 1
     upper_bound = player.coordinates_y -1
     lower_bound = player.coordinates_y +1
     #list of object keys found on the game map that you can interact with
-    interactable_objects = ["s01","c01"]
+    interactable_objects = ["s01","c01","c02"]
     #messages that coincide with the same index number in the interactable_objects list
-    messages = ["Home\nSweet\nHome","container"]
+    messages = ["Home\nSweet\nHome","container","container"]
 
     for row in range(upper_bound,lower_bound + 1):
-            for length in range(left_bound, right_bound + 1):
-                for number in range(len(interactable_objects)):
-                    if game_map[row][length] in interactable_objects:
-                        current_interactable_object = game_map[row][length]
-                        if messages[number] == "conversation":
-                            interaction_decision_maker()
-                            skip_map = True
-                        elif messages[number] == "container":
-                            container(interactable_objects[number])
-                            game_map[row][length] = "[C]"
-                        elif current_interactable_object == interactable_objects[number]:
-                            print(f"{color.yellow}{messages[number]}{color.default}")
-                            skip_map = True
+            for length in range(left_bound, right_bound + 1): 
+                if game_map[row][length] in interactable_objects:
+                    current_interactable_object = game_map[row][length]
+                    index_number = interactable_objects.index(current_interactable_object)
+                    if messages[index_number] == "conversation":
+                        interaction_decision_maker()
+                        skip_map = True
+                    elif messages[index_number] == "container":
+                        container(interactable_objects[index_number])
+                        game_map[row][length] = "[C]"
+                    elif current_interactable_object == interactable_objects[index_number]:
+                        print(f"{color.yellow}{messages[index_number]}{color.default}")
+                        skip_map = True
     return skip_map
 
 
@@ -81,7 +82,7 @@ def player_movement (game_map):
     possible_keys = ["w","a","s","d","p","h","e"]
     key = get_player_direction(possible_keys)
     solids = ["[w]","[W]","   ","H2O"]
-    hazards = ["   ", "H2O"]
+    hazards = ["   ", "H2O","[f]"]
     #"[w]" = wall
     #"[W]" = window
     #"   " = border
@@ -156,11 +157,11 @@ def main():
         ["   ","[ ]","[c]","[ ]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","   "],
         ["   ","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","   "],
         ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","   "],
-        ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[t]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","   "],
-        ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","   "],
-        ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","   "],
-        ["   ","[c]","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","   "],
-        ["   ","[c]","[c]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
+        ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[f]","[f]","[ ]","[ ]","[ ]","[ ]","[t]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","   "],
+        ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[ ]","[f]","[f]","[f]","[f]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","   "],
+        ["   ","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[f]","[f]","[f]","[f]","[f]","[f]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","   "],
+        ["   ","[c]","[t]","[t]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[f]","[f]","[f]","[f]","[f]","[f]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","   "],
+        ["   ","c02","[c]","[t]","[t]","[t]","[t]","[t]","[ ]","[ ]","[ ]","[f]","[f]","[f]","[f]","[f]","[f]","[f]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
         ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "]
     ]
     width = len(game_map[1])
@@ -176,7 +177,7 @@ def main():
         upper_bound = player.coordinates_y -3
         lower_bound = player.coordinates_y +3
         signs = ["s01"]
-        containers = ["c01"]
+        containers = ["c01","c02"]
 
         #for number_of_moves in moves
         if left_bound < 0:
@@ -220,9 +221,11 @@ def main():
                     #color and render unopened containers
                     elif game_map[row][length] in containers:
                         to_draw += f"[{color.purple}c{color.clear}]"
-                    #color and render unopened containers
+                    #color and render opened containers
                     elif game_map[row][length] == "[C]":
                         to_draw += f"[{color.cyan}c{color.clear}]"
+                    elif game_map[row][length] == "[f]":
+                        to_draw += f"[{color.red}f{color.clear}]"
                     else:
                         to_draw = to_draw + game_map[row][length]
                 print(to_draw)
