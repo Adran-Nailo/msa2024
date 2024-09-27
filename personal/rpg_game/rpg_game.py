@@ -1,5 +1,7 @@
 import characters
+import random 
 
+#all of the color codes tied to a word to change the color/style of text.
 class color:
 
     default = "\033[0m"
@@ -23,6 +25,7 @@ class color:
     lightgrey = '\033[37m'
     lightgreen = '\033[92m'
 
+#all of the maps for the game.
 class maps:
     world_map = [
             ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
@@ -35,7 +38,7 @@ class maps:
             ["   ","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[w]","[w]","h01","[w]","[w]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[t]","[ ]","[ ]","[ ]","H2O","H2O","H2O","H2O","H2O","H2O","H2O","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
             ["   ","[c]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","m01","[ ]","[ ]","[ ]","[ ]","[ ]","c03","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
             ["   ","[ ]","[ ]","[ ]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
-            ["   ","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","s02","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
+            ["   ","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","e01","s02","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
             ["   ","[ ]","[ ]","[ ]","[ ]","[c]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
             ["   ","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[t]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
             ["   ","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","H2O","H2O","H2O","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
@@ -82,6 +85,7 @@ class maps:
             ["   ","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","   "],
             ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "]
         ]
+    #starting house
     h01 = [
             ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
             ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
@@ -101,6 +105,7 @@ class maps:
             ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
             ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "]
         ]
+    #castle surrounded by moat
     dungeon1 = [
         ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
         ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
@@ -149,7 +154,9 @@ class maps:
         ["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "],
     ]
 
+#all of the in game conversations that run when you interact with something
 class dialogues():
+    #tutorial sign
     def s02():
         user_input = input("do you want to see the keybinds?\ny/n ")
         if user_input == "y":
@@ -178,6 +185,7 @@ class dialogues():
                 except:
                     print("please enter a whole number")
         input("press enter to continue")
+    #merchant SW of the starting house
     def m01():
         print("welcome to my shop!")
         user_input = input("would you like to look at my wares? \nI've got a limited stock right now\ny/n ")
@@ -216,7 +224,15 @@ class dialogues():
         else:
             print("\ncome back if you change your mind!")
 
-player = characters.Characters(11,9,0,"[0]",maps.world_map)
+class enemy_encounters():
+    def __init__ (self, damage, health, armor, name):
+        self.damage = damage
+        self.health = health
+        self.armor = armor
+        self.name = name
+#defines the player
+player = characters.Characters(11,9,0,"[0]",maps.world_map,20,5)
+# defines enemies
 
 #lists that determine if items are interactable.
 #make sure to also update the lists in the interact function
@@ -225,7 +241,9 @@ signs = ["s01","s02"]
 containers = ["c01","c02","c03"]
 doors = ["h01","w01","d04","d03","w02","w03"]
 merchants = ["m01"]
+enemies = ["e01"]
 
+#prints content of inventory when I is imput.
 def check_inventory():
     print(f"Gold = {player.score}")
     if player.sword_count != 0:
@@ -235,20 +253,20 @@ def check_inventory():
     if player.wall_count != 0:
         print(f"Wall = {player.wall_count}")
 
+#gets keystrokes from the player and then checks each letter against the list of possible letters, weeding out the letters that are invalid,
+#returns a list of all the valid keys from a user's input
 def get_player_direction(valid_key_list):
-    #while True:
     valid_directions = valid_key_list
     direction = input("Enter key: ")
     direction_list = []  
         
-    #all_moves = direction.split("")
-    #for move_number in all_moves:
     for letter in direction:
         if letter in valid_directions:
             direction_list += letter
     
     return direction_list
 
+#places a wall/hole at the players position if they have enough wall pieces
 def place_item(current_map,tile):
     if player.wall_count > 0:
         current_map[player.coordinates_y][player.coordinates_x] = tile
@@ -256,14 +274,24 @@ def place_item(current_map,tile):
     else:
         print("You do not have enough wall pieces to place down a wall")
 
-def interaction_decision_maker(interactable_object):
-    if interactable_object == "s02":
-            dialogues.s02()
-    elif interactable_object == "m01":
-            dialogues.m01()
+#runs interactions in which the player has possible input
+#the list_of_conversations variable is the tile that represents the conversation on the map#
+#the list_of_conversation_functions variable are the functions that correspond to the same item in the list_of_conversation variable
+#anytime you add something to one list, you MUST add something to the other list
+def conversation_function(interactable_object):
+    list_of_conversations = ["s02","m01"]
+    list_of_conversation_functions = [dialogues.s02,dialogues.m01]
+    for number in range(len(list_of_conversations)):
+        if interactable_object == list_of_conversations[number]:
+            run = list_of_conversation_functions[number]
+            run()
+            break
 
+        
+#the function that controls which map the player switches to, as well as the coordinate for that map, when the player interacts with a door
 def door_interaction(door_string):   
     for current_tile in range(len(doors)):
+        #position pairs for when the player goes through the door in y,x coordinates
         start_pos =    [
             [12,8],
             [8,11],
@@ -272,17 +300,20 @@ def door_interaction(door_string):
             [22,28],
             [25,38]
         ]
+        #the maps that cooincide with each door in the door list at the start of the code
         list_of_maps = [maps.h01,maps.world_map,maps.dungeon1,maps.dungeon1,maps.world_map,maps.world_map]
         if doors[current_tile] == door_string:
+            #changes the map
             player.current_map = list_of_maps[current_tile]
+            #sets the x and y coordinates
             player.coordinates_x = start_pos[current_tile][1]
             player.coordinates_y = start_pos[current_tile][0]
 
-#function to add points to the player's score when they open a container
-def container(container_string):
-    #container names    
-    #the amount of points added when the player opens the container
+#function to add items to a player's inventory when they open a closed container
+def container(container_string):  
+    #the amount of gold added when the player opens the container
     container_loot = [5,15,0]
+    #whether or not a container has extra items
     extra_check = [False,False,True]
     #for the extra loot, each number coresponds to the amount added in sword count, potion count, and wall count, in that order
     extra_loot = [
@@ -291,26 +322,30 @@ def container(container_string):
         [1, 5, 10]
         ]
     for number in range(len(containers)):
+        #adds gold
         if container_string == containers[number]:
             player.score += container_loot[number]
             print(f"You found {container_loot[number]} gold!")
             skip_map = True
-        if extra_check[number] == True and container_string == containers[number]:
-            if extra_loot[number][0]!=0:
-                player.sword_count += extra_loot[number][0]
-                print(f"you found {extra_loot[number][0]} sword(s)!")
-            if extra_loot[number][1]!=0:
-                player.potion_count += extra_loot[number][1]
-                print(f"you found {extra_loot[number][1]} potion(s)!")
-            if extra_loot[number][2]!=0:
-                player.wall_count += extra_loot[number][2]
-                print(f"you found {extra_loot[number][2]} wall piece(s)!")
-            skip_map = True
+            #adds the rest of the items
+            if extra_check[number] == True:
+                #adds swords
+                if extra_loot[number][0]!=0:
+                    player.sword_count += extra_loot[number][0]
+                    print(f"you found {extra_loot[number][0]} sword(s)!")
+                #adds potions
+                if extra_loot[number][1]!=0:
+                    player.potion_count += extra_loot[number][1]
+                    print(f"you found {extra_loot[number][1]} potion(s)!")
+                #adds tools
+                if extra_loot[number][2]!=0:
+                    player.wall_count += extra_loot[number][2]
+                    print(f"you found {extra_loot[number][2]} wall piece(s)!")
         else:
             skip_map = False
     return skip_map
 
-#function to run the interaction with objects
+#function to run the interaction with objects within 1 tile of player
 def interact(current_map):
     skip_map = False
     left_bound = player.coordinates_x -1
@@ -330,18 +365,24 @@ def interact(current_map):
                 if current_map[row][length] in interactable_objects:
                     current_interactable_object = current_map[row][length]
                     index_number = interactable_objects.index(current_interactable_object)
+                    #runs conversation_function if the current tile is in the conversation list
                     if current_interactable_object in conversations:
-                        interaction_decision_maker(current_interactable_object)                        
+                        conversation_function(current_interactable_object)
+                    #runs the container function and sets the tile to the open chest tile
                     elif current_interactable_object in containers:
                         skip_map = container(interactable_objects[index_number])
                         player.current_map[row][length] = "[C]"
+                    #runs the door_interaction function if the tile is in the door list
                     elif current_interactable_object in doors:
                         door_interaction(interactable_objects[index_number])
+                    #checks to see if the item is a simple sign, and if it is, it prints the text that coincides with it, and skips the map rendering
                     elif current_interactable_object in simple_sign:
                         print(f"{color.yellow}{simple_sign_messages[simple_sign.index(current_interactable_object)]}{color.default}")
                         skip_map = True
     return skip_map
 
+#function that handles all player movement, including all keys that do something, changing the player x and y, and running the functions that coincide with the other keys
+#also lists out all tiles that are solids, hazards, and placeable
 def player_movement (current_map):
     skip_map = False
     possible_keys = ["w","a","s","d","p","h","e","i"]
@@ -401,83 +442,181 @@ def player_movement (current_map):
 
     return skip_map
 
-def create_enemies(row,column,score,icon):
-    enemy = characters.Characters(row,column,score,icon)
-    return enemy
-
+#renders all tiles that have basic brackets, but formatted letters
 def map_render_inner_tiles(key,partial_tiles):
-    ["[t]","[c]","[C]","[f]"]
-    colors = [color.green,color.yellow,color.cyan,color.red]
-    icon = ["t","c","c","f"]
-    for number in range(len(colors)):
-        if key == partial_tiles[number]:
-            drawn_tile = f"[{colors[number]}{icon[number]}{color.clear}]"
-        elif key in doors:
-            drawn_tile = f"[{color.yellow}d{color.clear}]"
-        elif key in merchants:
-            drawn_tile = f"[{color.purple}m{color.clear}]"
+    #make sure that the partial_tile_full_list contains all of the tiles that you want to render as partial tiles in it.
+    #useless list that lists all of the partial tiles
+    [
+    "[t]",
+    "[c]",
+    "[C]",
+    "[f]"
+     ]
+    #list that shows what color each letter will be
+    colors = [
+        color.green,
+        color.yellow,
+        color.cyan,
+        color.red
+              ]
+    icon = [
+        "t",
+        "c",
+        "c",
+        "f"
+        ]
+    #adds "d" to the end of the icon list, and colors.yellow to the color list for each door
+    for door in range(len(doors)):
+        colors.append(color.yellow)
+        icon.append("d")
+    #adds "m" to the icon list, and colors.purple to the color list for each merchant
+    for merchant in range(len(merchants)):
+        colors.append(color.purple)
+        icon.append("m")
+    for enemy in range(len(enemies)):
+        colors.append(color.error)
+        icon.append("E")
+    tile_index = partial_tiles.index(key)
+    drawn_tile = f"[{colors[tile_index]}{icon[tile_index]}{color.clear}]"
     return drawn_tile
 
+#renders all of the tiles that are the same color for the full tile
 def map_render_full_tiles(key,full_tiles):
     ["[w]","H2O","[b]","gcw"]
     colors = [color.red,color.blue,color.underline,color.darkgrey]
     icon = ["[W]","[W]","[ ]","[W]"]
-    for number in range(len(colors)):
-        if key == full_tiles[number]:
-            drawn_tile = f"{colors[number]}{icon[number]}{color.clear}"
+    drawn_tile = f"{colors[full_tiles.index(key)]}{icon[full_tiles.index(key)]}{color.clear}"
     return drawn_tile
 
+#combat function
+def combat(tile,enemy_list):
+    foe = enemy_list[enemies.index(tile)]
+    combat_still_going = True
+    while combat_still_going == True:
+        player.block = 0
+        print(f"{foe.name} has {foe.health} health left\n\nYou have {player.health} health\n\nIt is your turn")
+        player_choice = input(f"1: Attack\n2: Defend\n")
+        if player_choice == "1":
+            if player.basic_attack_unlocked == True:
+                print(f"1: Basic Attack | {player.damage} damage")
+            if player.advanced_attack_unlocked == True:
+                print(f"2: Advanced Attack | {player.damage + 3} damage")
+            player_action = input("")
+            if player_action == "1":
+                damage_done = 0
+                if player.damage -foe.armor > 0:
+                    damage_done = player.damage - foe.armor
+                foe.health -= player.damage - foe.armor
+                print(f"You do {damage_done} damage to the {foe.name}")
+            elif player_action == "2":
+                damage_done = 0
+                if player.damage -foe.armor+3 > 0:
+                    damage_done = player.damage+3 - foe.armor
+                foe.health -= player.damage+3 - foe.armor
+                print(f"You do {damage_done} damage to the {foe.name}")
+        if player_choice == "2":
+            if player.basic_shield == True:
+                print(f"1: Basic Block | blocks 3 damage")
+            if player.advanced_shield == True:
+                print(f"2: Advanced Block | blocks 5 damage")
+            player_action = input("")
+            if player_action == "1":
+                player.block = 3
+            elif player_action == "2":
+                player.block = 5
+            
+        input("")
+        print(f"It is now the {foe.name}'s turn")
+        input("")
+        damage_done = 0
+        if foe.damage - player.armor - player.block > 0:
+            damage_done = foe.damage - player.armor - player.block
+        print(f"It does {damage_done} damage to you")
+        player.health -= damage_done
+
+        input("")
+        if foe.health <= 0:
+            combat_still_going == False
+            print("You won the fight and found 5 gold!")
+            player.score += 5
+            killed_enemy = True
+            input("")
+            break
+        elif player.health <= 0:
+            combat_still_going == False
+            print("You lost the fight and lost 5 gold :(")
+            input("")
+            player.coordinates_y += 1
+            player.score -= 5
+            killed_enemy = False
+            player.health = 1
+            break
+    return killed_enemy
+         
+
+#runs all the main functions
 def main():
-
-    
-
     while True:
-        width = len(player.current_map)
+        #gets user input, breaks it into a list, then checks each key for its uses,
+        #checks to see if it is wasd, and if it is, it changes the player x and y respectively
+        #checks to see if it is is any other valid key, and runs the corresponding function
         skip_map = player_movement(player.current_map) 
+        width = len(player.current_map[0])
         left_bound = player.coordinates_x - player.render_distance
         right_bound = player.coordinates_x + player.render_distance + 1
         upper_bound = player.coordinates_y -player.render_distance
         lower_bound = player.coordinates_y +player.render_distance
-        partial_tiles = ["[t]","[c]","[C]","[f]","h01","w01"]
+        partial_tiles = ["[t]","[c]","[C]","[f]"]
+        partial_tile_full_list = partial_tiles + doors + merchants+enemies
         full_tiles = ["[w]","H2O","[b]","gcw"]
 
-        #for number_of_moves in moves
         if left_bound < 0:
-            left_bound = 0
+            left_bound = 1
         if right_bound >= width:
-            right_bound = width - 1
+            right_bound = len(player.current_map)-1
         if upper_bound < 0:
             upper_bound = 0
         if lower_bound >= len(player.current_map):
             lower_bound = len(player.current_map)-1
-        
+
+        #combat function
+        if player.current_map[player.coordinates_y][player.coordinates_x] in enemies:
+            killed_enemy = False
+            goblin = enemy_encounters(3,10,0,"Goblin")
+            enemy_list = [goblin]
+            killed_enemy = combat(player.current_map[player.coordinates_y][player.coordinates_x],enemy_list)
+            if killed_enemy == True:
+                player.current_map[player.coordinates_y][player.coordinates_x] = "[ ]"
+
+        #renders the map if the player_movement function returns false       
         if skip_map == False:
             for row in range(upper_bound,lower_bound+1):
                 to_draw = ""
                 for length in range(left_bound, right_bound):
                     
-
+                    current_tile = player.current_map[row][length]
                     #Render and color player
                     if row == player.coordinates_y and length == player.coordinates_x:
                         to_draw = to_draw + f"[{color.bold}0{color.clear}]"
                     #Render and color partial tiles
-                    elif player.current_map[row][length] in partial_tiles or player.current_map[row][length] in doors or player.current_map[row][length] in merchants:
-                        to_draw += map_render_inner_tiles(player.current_map[row][length],partial_tiles)
+                    elif current_tile in partial_tile_full_list:
+                        to_draw += map_render_inner_tiles(player.current_map[row][length],partial_tile_full_list)
                     #render and color full tiles
-                    elif player.current_map[row][length] in full_tiles:
+                    elif current_tile in full_tiles:
                         to_draw += map_render_full_tiles(player.current_map[row][length],full_tiles)
                     #Render and color windows
-                    elif player.current_map[row][length] == "[W]":
+                    elif current_tile == "[W]":
                         to_draw = to_draw + f"{color.red}[{color.cyan}W{color.red}]{color.clear}"
                     #color and render signs
-                    elif player.current_map[row][length] in signs:
+                    elif current_tile in signs:
                         to_draw += f"[{color.yellow}S{color.clear}]"
                     #color and render unopened containers
-                    elif player.current_map[row][length] in containers:
+                    elif current_tile in containers:
                         to_draw += f"[{color.purple}c{color.clear}]"
                     else:
-                        to_draw = to_draw + player.current_map[row][length]
+                        to_draw = to_draw + current_tile
                 print(to_draw)
             
-print(f"{color.bold}Welcome to (Insert Name Here)!\nEnter 'e' to view keybindings and a short tutorial, or enter any direction key to jump in without it.\nIf you decide you want to view the tutorial again or view the keybindings, just return to the sign and press 'e' to interact.{color.clear}")   
+print(f"{color.bold}Welcome to Ironclad Legends!\nEnter 'e' to view keybindings and a short tutorial (recommended for your first playthrough), or enter any direction key to jump in without it.\nIf you decide you want to view the tutorial again or view the keybindings, just return to this sign and press 'e' to interact.{color.clear}")   
+
 main()
