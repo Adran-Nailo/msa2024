@@ -662,7 +662,7 @@ def main():
             
 while True:
         print(f"{color.bold}\n\n\nWelcome to Ironclad Legends!\n{color.clear}")
-        save_file = input(f"Please input the name of your save file:\n{color.yellow}NOTE: You must include the file extension .txt\n{color.clear}")
+        save_file = input(f"Please input the name of your save file:\n{color.yellow}NOTE: You must include the file extension .txt\nNOTE 2: You must have a txt file in the root folder as the main code, even if it is empty. If you do not have this, create one now, and run the code again\n{color.clear}")
         try:
             f = open(save_file,"r")
             f.close()
