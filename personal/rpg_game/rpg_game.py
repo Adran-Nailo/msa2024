@@ -160,7 +160,7 @@ class dialogues():
     def s02():
         user_input = input("do you want to see the keybinds?\ny/n ")
         if user_input == "y":
-            print("w = move up\na = move left\ns = move down\nd = move right\np = place a wall\nh = dig a hole\ne = interact with all tiles within one space\ni = check inventory")
+            print("w = move up\na = move left\ns = move down\nd = move right\np = place a wall\nh = dig a hole\ne = interact with all tiles within one space\ni = check inventory\n` = save and quit")
         user_input = input("do you want to read the tutorial?\ny/n ")
         if user_input == "y":
             print(f"the world is quite large, so don't be afraid to explore\nthere are many tiles that have no effect to your chaarachter, such as [ ], [{color.green}t{color.clear}], and [{color.underline} {color.clear}]")
@@ -230,9 +230,47 @@ class enemy_encounters():
         self.health = health
         self.armor = armor
         self.name = name
-#defines the player
-player = characters.Characters(11,9,0,"[0]",maps.world_map,20,5)
-# defines enemies
+#defines a new player
+def new_player(file):
+    f = open(file,"w")
+    f.write("11*9*0*[0]*world_map*20*5*0*0*0*3*False*False*0*False*False*0")
+    f.close()
+#player = characters.Characters(11,9,0,"[0]",maps.world_map,20,5)
+
+#translates string of a map to a class item
+def map_loader(map_string):
+    possible_map_strings = ["world_map","h01","dungeon1"]
+    map_codes = [maps.world_map,maps.h01,maps.dungeon1]
+    returned_map = map_codes[possible_map_strings.index(map_string)]
+    return returned_map
+
+def map_saver():
+    map_strings = ["world_map","h01","dungeon1"]
+    map_codes = [maps.world_map,maps.h01,maps.dungeon1]
+    returned_map = map_strings[map_codes.index(player.current_map)]
+    return returned_map
+#loads save data
+def load_save_data(file):
+    f = open(file, "r")
+    full_data = f.readline()
+    split_data = full_data.split("*")
+    map_class = map_loader(split_data[4])
+    score = int(split_data[2])
+    player = characters.Characters(int(split_data[0]),int(split_data[1]),score,split_data[3],map_class,int(split_data[5]),int(split_data[6]),int(split_data[7]),int(split_data[8]),int(split_data[9]),int(split_data[10]),split_data[11],split_data[12],int(split_data[13]),split_data[14],split_data[15],int(split_data[16]))
+    return player
+
+def save_file_contents(file):
+    f = open(file, "w")
+    map_class = map_saver()
+    print(f"{player.coordinates_x}, {player.coordinates_y}")
+    f.write(f"{player.coordinates_x}*{player.coordinates_y}*{player.score}*{player.icon}*{map_class}*{player.health}*{player.damage}*{player.sword_count}*{player.potion_count}*{player.wall_count}*{player.render_distance}*{player.basic_attack_unlocked}*{player.advanced_attack_unlocked}*{player.armor}*{player.basic_shield}*{player.advanced_shield}*{player.block}")
+    f.close
+    save_and_quit = input("Do you want to quit? y/n\n")
+    if save_and_quit == "y":
+        quit = True
+    else:
+        quit = False
+    return quit
 
 #lists that determine if items are interactable.
 #make sure to also update the lists in the interact function
@@ -385,7 +423,7 @@ def interact(current_map):
 #also lists out all tiles that are solids, hazards, and placeable
 def player_movement (current_map):
     skip_map = False
-    possible_keys = ["w","a","s","d","p","h","e","i"]
+    possible_keys = ["w","a","s","d","p","h","e","i","`"]
     #make sure all these lists are the *SAME* length
     movement_keys =  ["w","a","s","d"]
     placement_keys = ["p","h","^","^"]
@@ -439,6 +477,8 @@ def player_movement (current_map):
                 
             elif key == placement_keys[number]:
                 place_item(current_map,placeable_tiles[number])
+            elif key == "`":
+                skip_map = "save"
 
     return skip_map
 
@@ -556,11 +596,14 @@ def combat(tile,enemy_list):
 
 #runs all the main functions
 def main():
-    while True:
+    end_game = False
+    while end_game != True:
         #gets user input, breaks it into a list, then checks each key for its uses,
         #checks to see if it is wasd, and if it is, it changes the player x and y respectively
         #checks to see if it is is any other valid key, and runs the corresponding function
-        skip_map = player_movement(player.current_map) 
+        skip_map = player_movement(player.current_map)
+        if skip_map == "save":
+            end_game = save_file_contents(save_file)
         width = len(player.current_map[0])
         left_bound = player.coordinates_x - player.render_distance
         right_bound = player.coordinates_x + player.render_distance + 1
@@ -617,6 +660,25 @@ def main():
                         to_draw = to_draw + current_tile
                 print(to_draw)
             
-print(f"{color.bold}Welcome to Ironclad Legends!\nEnter 'e' to view keybindings and a short tutorial (recommended for your first playthrough), or enter any direction key to jump in without it.\nIf you decide you want to view the tutorial again or view the keybindings, just return to this sign and press 'e' to interact.{color.clear}")   
+while True:
+        print(f"{color.bold}\n\n\nWelcome to Ironclad Legends!\n{color.clear}")
+        save_file = input(f"Please input the name of your save file:\n{color.yellow}NOTE: You must include the file extension .txt\n{color.clear}")
+        try:
+            f = open(save_file,"r")
+            f.close()
+        except:
+            print(f"{color.error}\n\n----------------------------\nERROR: save file not found.\n----------------------------\n\n{color.clear}")
+            continue
+        while True:
+            new_file = input("Is this a new file?\n")
+            if new_file == "yes":
+                new_player(save_file)
+                player = load_save_data(save_file)
+            else:
+                player = load_save_data(save_file)
+            break
+        break
 
+if player.coordinates_x == 11 and player.coordinates_y == 9 and player.current_map == maps.world_map:
+    print(f"\n{color.bold}Enter 'e' to view keybindings and a short tutorial (recommended for your first playthrough), or enter any direction key to jump in without it.\nIf you decide you want to view the tutorial again or view the keybindings, just return to this sign and press 'e' to interact.{color.clear}")   
 main()
