@@ -1,0 +1,1 @@
+9*11*0*[0]*world_map*20*5*0*0*0*3*False*False*0*False*False*0
